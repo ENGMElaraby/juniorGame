@@ -1,6 +1,5 @@
 <?php
 
-use App\Utilities\Notification\AdminNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,5 +25,8 @@ Route::group(['middleware' => 'auth:admin'], static function () {
     });
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('users', 'UsersController');
+    Route::resource('admins', 'AdminsController');
+    Route::resource('letters', 'LettersController');
 
 });

@@ -9,7 +9,7 @@ use JetBrains\PhpStorm\Pure;
 use MElaraby\Emerald\Helpers\FilesHelper;
 use MElaraby\Emerald\Repositories\RepositoryCrud;
 
-class UserRepository extends RepositoryCrud
+class UsersRepository extends RepositoryCrud
 {
     use FilesHelper;
 
@@ -69,5 +69,17 @@ class UserRepository extends RepositoryCrud
             $data['photo'] = $this->fileUpload($data['image'], 'public/user');
         }
         $model->update($data);
+    }
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function store(array $data)
+    {
+        if (!isset($data['password'])) {
+            $data['password'] = bcrypt('123456');
+        }
+        $this->model::create($data);
     }
 }

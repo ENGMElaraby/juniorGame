@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Repositories\UserRepository;
 use Illuminate\{Foundation\Auth\AuthenticatesUsers, Http\Request};
 use MElaraby\Emerald\HttpFoundation\Response;
 
@@ -31,22 +30,6 @@ class LoginController extends Controller
     public function __construct()
     {
 //        $this->middleware('guest')->except('logout');
-    }
-
-    /**
-     * @param Request $request
-     * @return Response
-     */
-    final public function updateToken(Request $request): Response
-    {
-        $user = User::find(auth()->id());
-        if ($user && $request->has('token_device') && !empty($request->get('token_device'))) {
-            UserRepository::updateDeviceToken($user, $request->get('token_device'));
-        }
-
-        return Response::response([
-            'message' => 'saved successfully',
-        ]);
     }
 
     /**
@@ -107,9 +90,9 @@ class LoginController extends Controller
             }
         }
 
-        if ($request->has('token_device') && !empty($request->get('token_device'))) {
-            UserRepository::updateDeviceToken($user, $request->get('token_device'));
-        }
+//        if ($request->has('token_device') && !empty($request->get('token_device'))) {
+//            ::updateDeviceToken($user, $request->get('token_device'));
+//        }
 
         return Response::response([
             'message' => 'User login successfully',
