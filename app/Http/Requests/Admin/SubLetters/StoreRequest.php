@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Letters;
+namespace App\Http\Requests\Admin\SubLetters;
 
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
@@ -26,7 +26,6 @@ class StoreRequest extends FormRequest
     {
         return [
             'letter' => ['required', 'string', 'max:1'],
-            'youtube' => ['required', 'string'],
             'status' => ['required', 'string', 'max:1'],
         ];
     }

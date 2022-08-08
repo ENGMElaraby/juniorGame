@@ -28,5 +28,7 @@ Route::group(['middleware' => 'auth:admin'], static function () {
     Route::resource('users', 'UsersController');
     Route::resource('admins', 'AdminsController');
     Route::resource('letters', 'LettersController');
+    Route::resource('sub-letters', 'SubLettersController');
+    Route::resource('words', 'WordsController');
 
 });

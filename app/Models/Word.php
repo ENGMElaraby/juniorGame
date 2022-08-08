@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Letter extends Model
+class Word extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,7 @@ class Letter extends Model
      * @var string[]
      */
     protected $fillable = [
-        'letter',
-        'youtube',
-        'status',
+        'word',
+        'image',
     ];
 }

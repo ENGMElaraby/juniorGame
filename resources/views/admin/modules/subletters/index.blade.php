@@ -45,7 +45,7 @@
 @section('content_area')
     <div class="row layout-top-spacing mt-0" id="cancel-row">
         <div class="action-btn layout-top-spacing mb-3 mt-0">
-            <a href="{{ route('admin.letters.create')  }}" class="btn btn-primary">
+            <a href="{{ route('admin.sub-letters.create')  }}" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="feather feather-plus-circle">
@@ -62,8 +62,7 @@
                     <tr>
                         <th>الحرف</th>
                         <th>الحاله</th>
-                        <th>القصه</th>
-                        <th>حروف التشكيل</th>
+                        <th>الكلمات</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -81,17 +80,14 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ $letter->youtube }}" class="badge badge-dark" target="_blank">فتح</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.sub-letters.index') }}" class="badge badge-info"
+                                <a href="{{ route('admin.words.index') }}" class="badge badge-info"
                                    target="_blank">فتح</a>
                             </td>
                             <td class="text-center">
                                 {{--                                <a class="btn btn-secondary"--}}
                                 {{--                                   href="{{ route('admin.users.edit', $letter->id) }}">تعديل</a>--}}
                                 <form method="POST"
-                                      action="{{ route('admin.letters.destroy', $letter->id)  }}">
+                                      action="{{ route('admin.sub-letters.destroy', $letter->id)  }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 

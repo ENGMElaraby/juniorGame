@@ -45,7 +45,7 @@
 @section('content_area')
     <div class="row layout-top-spacing mt-0" id="cancel-row">
         <div class="action-btn layout-top-spacing mb-3 mt-0">
-            <a href="{{ route('admin.letters.create')  }}" class="btn btn-primary">
+            <a href="{{ route('admin.words.create')  }}" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="feather feather-plus-circle">
@@ -53,17 +53,15 @@
                     <line x1="12" y1="8" x2="12" y2="16"></line>
                     <line x1="8" y1="12" x2="16" y2="12"></line>
                 </svg>
-                أضاف حرف</a>
+                أضاف </a>
         </div>
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
             <div class="widget-content widget-content-area br-6">
                 <table id="alter_pagination" class="table table-hover" style="width:100%">
                     <thead>
                     <tr>
-                        <th>الحرف</th>
-                        <th>الحاله</th>
-                        <th>القصه</th>
-                        <th>حروف التشكيل</th>
+                        <th>الكلمه</th>
+                        <th>الصوره</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -71,27 +69,16 @@
                     @foreach($data as $letter)
                         <tr>
                             <td>
-                                {{ $letter->letter }}
+                                {{ $letter->word }}
                             </td>
                             <td>
-                                @if($letter->status)
-                                    <span class="badge badge-success">مفعل</span>
-                                @else
-                                    <span class="badge badge-danger">غير مفعل</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ $letter->youtube }}" class="badge badge-dark" target="_blank">فتح</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.sub-letters.index') }}" class="badge badge-info"
-                                   target="_blank">فتح</a>
+                                <img src="{{ $letter->image }}" alt="" width="100" height="100">
                             </td>
                             <td class="text-center">
                                 {{--                                <a class="btn btn-secondary"--}}
                                 {{--                                   href="{{ route('admin.users.edit', $letter->id) }}">تعديل</a>--}}
                                 <form method="POST"
-                                      action="{{ route('admin.letters.destroy', $letter->id)  }}">
+                                      action="{{ route('admin.words.destroy', $letter->id)  }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 

@@ -123,16 +123,16 @@ trait FilesHelper
             return null;
         }
 
-//        $fileOriginalExtension = $file->getClientOriginalExtension();
-//        $fileUniqueName = $this->uniqueName($fileOriginalExtension);
+        $fileOriginalExtension = $file->getClientOriginalExtension();
+        $fileUniqueName = $this->uniqueName($fileOriginalExtension);
 
 //        if ($disk) {
-        $uploadedFile = Storage::put($location, $file);
-        return url()->to(str_replace('public/', 'public/storage/', $uploadedFile));
+//        $uploadedFile = Storage::put($location, $file);
+//        return url()->to(str_replace('public/', 'public/storage/', $uploadedFile));
 //        }
 
-//        $file->storeAs('public/uploads/' . $location, $fileUniqueName, ['disk' => 'public_uploads']);
-//        return url()->to('/storage/uploads/' . $location . '/' . $fileUniqueName);
+        $file->storeAs($location, $fileUniqueName, ['disk' => 'public']);
+        return url()->to('/storage/' . $location . '/' . $fileUniqueName);
     }
 
     /**

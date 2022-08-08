@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Letters;
+namespace App\Http\Requests\Admin\Words;
 
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
@@ -25,9 +25,8 @@ class StoreRequest extends FormRequest
     final public function rules(): array
     {
         return [
-            'letter' => ['required', 'string', 'max:1'],
-            'youtube' => ['required', 'string'],
-            'status' => ['required', 'string', 'max:1'],
+            'word' => ['required', 'string', 'max:20'],
+            'image' => ['required', 'image'],
         ];
     }
 }

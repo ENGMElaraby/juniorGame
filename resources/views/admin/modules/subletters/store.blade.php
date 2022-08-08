@@ -30,7 +30,7 @@
                         </div>
                         <div class="widget-content widget-content-area">
                             <form class="needs-validation" method="post" novalidate id="storeForm"
-                                  action="{{ route('admin.letters.store') }}"
+                                  action="{{ route('admin.sub-letters.store') }}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
@@ -51,19 +51,6 @@
                                         <label for="email">الحاله</label>
                                         <input class="form-control" type="radio" name="status" value="1"> مفعل<br>
                                         <input class="form-control" type="radio" name="status" value="0"> غير مفعل<br>
-                                    </div>
-                                    <div class="col-md-3 mb-5">
-                                        <label for="youtube">القصه (يوتيوب)</label>
-                                        <input type="text" class="form-control" id="youtube"
-                                               name="youtube"
-                                               placeholder="القصه"
-                                               value="{{ old('youtube') }}" required>
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
                                     </div>
                                 </div>
                                 <button id="submit_saved" class="btn btn-primary mt-2" type="submit">حفظ</button>
