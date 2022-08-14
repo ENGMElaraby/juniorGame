@@ -17,6 +17,8 @@ class CreateSubLettersTable extends Migration
             $table->id();
             $table->string('letter', 191);
             $table->boolean('status');
+            $table->bigInteger('letter_id', false, true);
+            $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade');
             $table->timestamps();
         });
     }

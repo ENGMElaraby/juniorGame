@@ -84,7 +84,8 @@
                                 <a href="{{ $letter->youtube }}" class="badge badge-dark" target="_blank">فتح</a>
                             </td>
                             <td>
-                                <a href="{{ route('admin.sub-letters.index') }}" class="badge badge-info"
+                                <a href="{{ route('admin.sub-letters.index', ['letter_id'=>$letter->id]) }}"
+                                   class="badge badge-info"
                                    target="_blank">فتح</a>
                             </td>
                             <td class="text-center">
