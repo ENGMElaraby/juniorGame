@@ -17,6 +17,9 @@ class CreateWordsTable extends Migration
             $table->id();
             $table->string('word', 191);
             $table->string('image');
+            $table->bigInteger('letter_id', false, true);
+            $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -75,8 +75,8 @@
                                 <img src="{{ $letter->image }}" alt="" width="100" height="100">
                             </td>
                             <td class="text-center">
-                                {{--                                <a class="btn btn-secondary"--}}
-                                {{--                                   href="{{ route('admin.users.edit', $letter->id) }}">تعديل</a>--}}
+                                <a class="btn btn-secondary"
+                                   href="{{ route('admin.words.edit', $letter->id) }}">تعديل</a>
                                 <form method="POST"
                                       action="{{ route('admin.words.destroy', $letter->id)  }}">
                                     {{ csrf_field() }}

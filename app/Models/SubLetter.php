@@ -17,5 +17,6 @@ class SubLetter extends Model
     protected $fillable = [
         'letter',
         'status',
+        'letter_id',
     ];
 }

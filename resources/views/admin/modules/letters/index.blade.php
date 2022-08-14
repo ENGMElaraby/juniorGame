@@ -64,6 +64,7 @@
                         <th>الحاله</th>
                         <th>القصه</th>
                         <th>حروف التشكيل</th>
+                        <th>الكلمات</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -85,6 +86,11 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.sub-letters.index', ['letter_id'=>$letter->id]) }}"
+                                   class="badge badge-info"
+                                   target="_blank">فتح</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.words.index', ['letter_id'=>$letter->id]) }}"
                                    class="badge badge-info"
                                    target="_blank">فتح</a>
                             </td>

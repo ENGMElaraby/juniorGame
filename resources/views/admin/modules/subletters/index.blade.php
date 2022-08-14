@@ -61,8 +61,8 @@
                     <thead>
                     <tr>
                         <th>الحرف</th>
+                        <th>يندرج تحت حرف</th>
                         <th>الحاله</th>
-                        <th>الكلمات</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -73,16 +73,16 @@
                                 {{ $letter->letter }}
                             </td>
                             <td>
+                                {{ \App\Models\Letter::find($letter->letter_id)?->letter }}
+                            </td>
+                            <td>
                                 @if($letter->status)
                                     <span class="badge badge-success">مفعل</span>
                                 @else
                                     <span class="badge badge-danger">غير مفعل</span>
                                 @endif
                             </td>
-                            <td>
-                                <a href="{{ route('admin.words.index') }}" class="badge badge-info"
-                                   target="_blank">فتح</a>
-                            </td>
+
                             <td class="text-center">
                                 <a class="btn btn-secondary"
                                    href="{{ route('admin.sub-letters.edit', $letter->id) }}">تعديل</a>

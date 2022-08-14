@@ -24,7 +24,7 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>طالب جديد</h4>
+                                    <h4>تعديل</h4>
                                 </div>
                             </div>
                         </div>
@@ -35,6 +35,15 @@
                                 @csrf
                                 @method('put')
                                 <div class="form-row">
+                                    <div class="col-md-3 mb-5">
+                                        <label for="letter_id">يندرج تحت حرف</label>
+                                        <select class="form-control" name="letter_id" id="letter_id" required>
+                                            @foreach(\App\Models\Letter::all() as $letter)
+                                                <option value="{{ $letter->id }}"
+                                                        @if($data->letter_id == $letter->id) checked @endif>{{ $letter->letter }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="col-md-3 mb-5">
                                         <label for="letter">الحرف</label>
                                         <input type="text" class="form-control" id="letter"
