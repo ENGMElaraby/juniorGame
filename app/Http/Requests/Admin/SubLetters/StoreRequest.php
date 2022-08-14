@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
         return [
             'letter' => ['required', 'string', 'max:1'],
             'status' => ['required', 'string', 'max:1'],
-            'letter_id' => ['required', 'string'],
+            'letter_id' => ['required'],
         ];
     }
 }

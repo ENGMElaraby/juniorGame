@@ -61,6 +61,7 @@
                     <thead>
                     <tr>
                         <th>الكلمه</th>
+                        <th>يندرج تحت حرف</th>
                         <th>الصوره</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
@@ -70,6 +71,9 @@
                         <tr>
                             <td>
                                 {{ $letter->word }}
+                            </td>
+                            <td>
+                                {{ \App\Models\Letter::find($letter->letter_id)?->letter }}
                             </td>
                             <td>
                                 <img src="{{ $letter->image }}" alt="" width="100" height="100">
