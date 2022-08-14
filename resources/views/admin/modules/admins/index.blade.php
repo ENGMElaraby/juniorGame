@@ -62,7 +62,7 @@
                     <tr>
                         <th>اسم</th>
                         <th>البريد</th>
-                        {{--                        <th class="text-center dt-no-sorting">التحكم</th>--}}
+                        <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
                     <tbody style="direction: ltr">
@@ -74,21 +74,21 @@
                             <td>
                                 {{ $student->email }}
                             </td>
-                            {{--                            --}}
-                            {{--                            <td class="text-center">--}}
-                            {{--                                <a class="btn btn-secondary"--}}
-                            {{--                                   href="{{ route('admin.users.edit', $student->id) }}">تعديل</a>--}}
-                            {{--                                <form method="POST"--}}
-                            {{--                                      action="{{ route('admin.users.destroy', $student->id)  }}">--}}
-                            {{--                                    {{ csrf_field() }}--}}
-                            {{--                                    {{ method_field('DELETE') }}--}}
 
-                            {{--                                    <div class="form-group">--}}
-                            {{--                                        <input class="btn btn-danger delete-user" type="submit"--}}
-                            {{--                                               value="مسح">--}}
-                            {{--                                    </div>--}}
-                            {{--                                </form>--}}
-                            {{--                            </td>--}}
+                            <td class="text-center">
+                                <a class="btn btn-secondary"
+                                   href="{{ route('admin.admins.edit', $student->id) }}">تعديل</a>
+                                <form method="POST"
+                                      action="{{ route('admin.admins.destroy', $student->id)  }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <div class="form-group">
+                                        <input class="btn btn-danger delete-user" type="submit"
+                                               value="مسح">
+                                    </div>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -30,48 +30,71 @@
                         </div>
                         <div class="widget-content widget-content-area">
                             <form class="needs-validation" method="post" novalidate id="storeForm"
-                                  action="{{ route('admin.students.update', $data['id']) }}"
+                                  action="{{ route('admin.users.update', $data['id']) }}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div class="form-row">
                                     <div class="col-md-3 mb-5">
-                                        <label for="image">صوره</label>
-                                        <input type="file" class="form-control" id="image"
-                                               name="image"
-                                               placeholder="الاسم"
-                                        >
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-5">
-                                        <label for="code">كود</label>
-                                        <input type="text" class="form-control" id="code"
-                                               name="code"
-                                               placeholder="كود"
-                                               value="{{ old('code') ?? $data['code'] }}" required>
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
+                                        <label for="gender">النوع</label>
+                                        <select class="form-control" id="gender" name="gender">
+                                            <option value="male" @if($data->gender === 'male') selected @endif>ولد
+                                            </option>
+                                            <option value="female" @if($data->gender === 'female') selected @endif>بنت
+                                            </option>
+                                        </select>
+
                                     </div>
                                     <div class="col-md-3 mb-5">
                                         <label for="name">الاسم</label>
                                         <input type="text" class="form-control" id="name"
                                                name="name"
                                                placeholder="الاسم"
-                                               value="{{ old('name') ?? $data['name'] }}" required>
+                                               value="{{ old('name') ?? $data->name }}" required>
                                         <div class="valid-tooltip">
                                             تبدو جيدا!
                                         </div>
                                         <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
+                                            من فضلك ادخل الحقل.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-5">
+                                        <label for="school">المدرسه</label>
+                                        <input type="text" class="form-control" id="school"
+                                               name="school"
+                                               placeholder="المدرسه"
+                                               value="{{ old('school') ?? $data->school }}">
+                                        <div class="valid-tooltip">
+                                            تبدو جيدا!
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                            من فضلك ادخل الحقل.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-5">
+                                        <label for="city">البلد</label>
+                                        <input type="text" class="form-control" id="city"
+                                               name="city"
+                                               placeholder="البلد"
+                                               value="{{ old('city') ?? $data->city }}">
+                                        <div class="valid-tooltip">
+                                            تبدو جيدا!
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                            من فضلك ادخل الحقل.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-5">
+                                        <label for="years_old">السن</label>
+                                        <input type="text" class="form-control" id="years_old"
+                                               name="years_old"
+                                               placeholder="السن"
+                                               value="{{ old('years_old') ?? $data->years_old }}">
+                                        <div class="valid-tooltip">
+                                            تبدو جيدا!
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                            من فضلك ادخل الحقل.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-5">
@@ -79,77 +102,14 @@
                                         <input type="text" class="form-control" id="mobile"
                                                name="mobile"
                                                placeholder="موبايل"
-                                               value="{{ old('mobile') ?? $data['mobile'] }}" required>
+                                               value="{{ old('mobile') ?? $data->mobile }}">
                                         <div class="valid-tooltip">
                                             تبدو جيدا!
                                         </div>
                                         <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
+                                            من فضلك ادخل الحقل.
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-5">
-                                        <label for="parent_mobile">موبايل ولي الامر</label>
-                                        <input type="text" class="form-control" id="parent_mobile"
-                                               name="parent_mobile"
-                                               placeholder="موبايل ولي الامر"
-                                               value="{{ old('parent_mobile') ?? $data['parent_mobile'] }}">
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-5">
-                                        <label for="school">المدرسه</label>
-                                        <input type="text" class="form-control" id="school"
-                                               name="school"
-                                               placeholder="موبايل"
-                                               value="{{ old('school') ?? $data['school'] }}">
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-5">
-                                        <label for="education_level">المرحله الدراسه</label>
-                                        <select class="selectpicker form-control" id="education_level"
-                                                name="education_level">
-                                            <option disabled selected>اختر</option>
-                                            @foreach(\App\Repositories\EducationLevelRepository::all() as $educationLevel)
-                                                <option @if((old('education_level') ?? $data['education_level']) == $educationLevel->id) selected
-                                                        @endif value="{{ $educationLevel->id }}">{{ $educationLevel->name_ar }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-5">
-                                        <label for="education_center">السنتر</label>
-                                        <select class="selectpicker form-control" id="education_center"
-                                                name="education_center">
-                                            <option disabled selected>اختر</option>
-                                            @foreach(\App\Repositories\EducationCenterRepository::all() as $educationCenter)
-                                                <option @if((old('education_center') ?? $data['education_center']) == $educationCenter->id) selected
-                                                        @endif value="{{ $educationCenter->id }}">{{ $educationCenter->name_ar }}
-                                                    ({{ $educationCenter->getGovernorate->name_ar }})
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-tooltip">
-                                            تبدو جيدا!
-                                        </div>
-                                        <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
-                                        </div>
-                                    </div>
-
                                 </div>
                                 <button id="submit_saved" class="btn btn-primary mt-2" type="submit">حفظ</button>
                             </form>

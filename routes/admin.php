@@ -21,6 +21,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], static function () {
 
 Route::group(['middleware' => 'auth:admin'], static function () {
     Route::get('/', static function () {
+
         return redirect()->route('admin.dashboard');
     });
 

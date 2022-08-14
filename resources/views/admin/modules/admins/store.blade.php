@@ -44,7 +44,7 @@
                                             تبدو جيدا!
                                         </div>
                                         <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
+                                            من فضلك ادخل الحقل.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-5">
@@ -57,7 +57,7 @@
                                             تبدو جيدا!
                                         </div>
                                         <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
+                                            من فضلك ادخل الحقل.
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-5">
@@ -70,7 +70,7 @@
                                             تبدو جيدا!
                                         </div>
                                         <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
+                                            من فضلك ادخل الحقل.
                                         </div>
                                     </div>
                                 </div>

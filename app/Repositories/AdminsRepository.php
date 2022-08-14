@@ -38,6 +38,9 @@ class AdminsRepository extends RepositoryCrud
         if (isset($data['image'])) {
             $data['photo'] = $this->fileUpload($data['image'], 'public/user');
         }
+        if (is_null($data['password'])) {
+            unset($data['password']);
+        }
         $model->update($data);
     }
 

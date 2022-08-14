@@ -15,11 +15,11 @@
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/plugins.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/forms/theme-checkbox-radio.css') }}">
     @stack('MANDATORY_STYLES')
 </head>
 <body class="@stack('body', 'starterkit')">
-    @yield('content')
+@yield('content')
 
 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 <script src="{{ asset('assets/js/libs/jquery-3.1.1.min.js') }}"></script>
@@ -30,8 +30,8 @@
 <script src="{{ asset('plugins/sweetalerts/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 <!-- END GLOBAL MANDATORY SCRIPTS -->
-    @include('admin.layouts.events.errors')
-    @include('admin.layouts.events.alarms')
+@include('admin.layouts.events.errors')
+@include('admin.layouts.events.alarms')
 @stack('MANDATORY_SCRIPTS')
 @stack('script')
 </body>

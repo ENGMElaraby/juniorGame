@@ -84,8 +84,8 @@
                                    target="_blank">فتح</a>
                             </td>
                             <td class="text-center">
-                                {{--                                <a class="btn btn-secondary"--}}
-                                {{--                                   href="{{ route('admin.users.edit', $letter->id) }}">تعديل</a>--}}
+                                <a class="btn btn-secondary"
+                                   href="{{ route('admin.sub-letters.edit', $letter->id) }}">تعديل</a>
                                 <form method="POST"
                                       action="{{ route('admin.sub-letters.destroy', $letter->id)  }}">
                                     {{ csrf_field() }}

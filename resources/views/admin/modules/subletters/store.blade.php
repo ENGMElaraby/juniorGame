@@ -44,13 +44,25 @@
                                             تبدو جيدا!
                                         </div>
                                         <div class="invalid-tooltip">
-                                            من فضلك اختر الفصل.
+                                            من فضلك ادخل الحقل.
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-5">
+                                    <div class="col-md-2 mb-5">
                                         <label for="email">الحاله</label>
-                                        <input class="form-control" type="radio" name="status" value="1"> مفعل<br>
-                                        <input class="form-control" type="radio" name="status" value="0"> غير مفعل<br>
+                                        <div class="n-chk">
+                                            <label class="new-control new-radio radio-classic-success">
+                                                <input type="radio" class="new-control-input" name="status" value="1"
+                                                       checked>
+                                                <span class="new-control-indicator"></span>مفعل
+                                            </label>
+                                        </div>
+                                        <div class="n-chk">
+                                            <label class="new-control new-radio radio-classic-danger">
+                                                <input type="radio" class="new-control-input" name="status"
+                                                       value="0">
+                                                <span class="new-control-indicator"></span>غير مفعل
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <button id="submit_saved" class="btn btn-primary mt-2" type="submit">حفظ</button>
