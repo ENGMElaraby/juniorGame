@@ -57,7 +57,7 @@ class UsersRepository extends RepositoryCrud
      * @param $id
      * @return void
      */
-    final public function update(array $data, $id): void
+    final public function update(array $data, $id): mixed
     {
         if ($id instanceof Model) {
             $model = $id;

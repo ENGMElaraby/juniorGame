@@ -39,7 +39,7 @@ class AdminRepository extends RepositoryCrud
      * @param array $data
      * @param Model|int $id
      */
-    public function update(array $data, $id): void
+    public function update(array $data, $id): mixed
     {
         if (!empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);

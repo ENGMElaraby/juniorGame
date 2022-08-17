@@ -110,7 +110,7 @@ abstract class RepositoryCrud extends Repository implements RepositoryContractCr
      * @param array $data
      * @param int|Model $id
      */
-    public function update(array $data, $id): void
+    public function update(array $data, $id): mixed
     {
         if ($id instanceof Model) {
             $model = $id;
@@ -119,5 +119,6 @@ abstract class RepositoryCrud extends Repository implements RepositoryContractCr
         }
 
         $model->update($data);
+        return $model;
     }
 }

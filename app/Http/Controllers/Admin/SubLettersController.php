@@ -34,5 +34,12 @@ class SubLettersController extends CrudControllerController
         return route($this->route . 'index', ['letter_id' => $model->letter_id]);
     }
 
-
+    /**
+     * @param $model
+     * @return string
+     */
+    public function updateRedirect($model): string
+    {
+        return route($this->route . 'index', ['letter_id' => $model->letter_id]);
+    }
 }

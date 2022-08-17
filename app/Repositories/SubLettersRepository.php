@@ -58,7 +58,7 @@ class SubLettersRepository extends RepositoryCrud
      * @param array $data
      * @param int|Model $id
      */
-    public function update(array $data, $id): void
+    public function update(array $data, $id): mixed
     {
         if (isset($data['image']) && is_null($data['image'])) {
             unset($data['image']);
@@ -66,6 +66,6 @@ class SubLettersRepository extends RepositoryCrud
         if (isset($data['voice']) && is_null($data['voice'])) {
             unset($data['voice']);
         }
-        parent::update($data, $id);
+        return parent::update($data, $id);
     }
 }
