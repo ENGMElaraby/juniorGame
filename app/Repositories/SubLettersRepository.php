@@ -66,6 +66,7 @@ class SubLettersRepository extends RepositoryCrud
         if (isset($data['voice']) && is_null($data['voice'])) {
             unset($data['voice']);
         }
-        return parent::update($data, $id);
+        parent::update($data, $id);
+        return $data['letter_id'];
     }
 }
