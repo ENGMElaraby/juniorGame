@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     final public function rules(): array
     {
         return [
-            'letter' => ['required', 'string', 'max:1'],
+            'letter' => ['required', 'string', 'max:2'],
             'status' => ['required', 'string', 'max:1'],
             'letter_id' => ['required'],
         ];
