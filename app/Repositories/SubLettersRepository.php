@@ -48,6 +48,8 @@ class SubLettersRepository extends RepositoryCrud
     public function store(array $data)
     {
         $data['status'] = (int)$data['status'];
+        $data['image'] = $this->fileUpload($data['image'], 'words');
+        $data['voice'] = $this->fileUpload($data['voice'], 'voices');
         $this->model::create($data);
     }
 }
