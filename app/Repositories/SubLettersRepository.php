@@ -51,7 +51,7 @@ class SubLettersRepository extends RepositoryCrud
         $data['status'] = (int)$data['status'];
         $data['image'] = $this->fileUpload($data['image'], 'words');
         $data['voice'] = $this->fileUpload($data['voice'], 'voices');
-        $this->model::create($data);
+        return $this->model::create($data);
     }
 
     /**

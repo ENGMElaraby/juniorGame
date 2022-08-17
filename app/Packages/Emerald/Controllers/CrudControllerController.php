@@ -108,9 +108,9 @@ abstract class CrudControllerController extends Controller implements CrudContro
     public function store(): Response
     {
         $request = app($this->storeRequest);
-        $this->repository->store($request->validated());
+        $model = $this->repository->store($request->validated());
         return new Response(
-            redirect: $this->storeRedirect(),
+            redirect: $this->storeRedirect($model),
             alert: $this->storeAlert('success', 'تم الاضافة')
         );
     }
@@ -210,8 +210,8 @@ abstract class CrudControllerController extends Controller implements CrudContro
         }
 
         try {
-            return $this->{$method}();
-        } catch (Error | BadMethodCallException $e) {
+            return $this->{$method}(...$parameters);
+        } catch (Error|BadMethodCallException $e) {
             $pattern = '~^Call to undefined method (?P<class>[^:]+)::(?P<method>[^\(]+)\(\)$~';
 
             if (!preg_match($pattern, $e->getMessage(), $matches)) {
