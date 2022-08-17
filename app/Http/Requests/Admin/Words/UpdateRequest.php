@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'word' => ['required', 'string', 'max:20'],
             'image' => ['sometimes', 'image'],
+            'voice' => ['sometimes', 'file'],
             'letter_id' => ['sometimes'],
         ];
     }

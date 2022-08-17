@@ -17,6 +17,7 @@ class Word extends Model
     protected $fillable = [
         'word',
         'image',
+        'voice',
         'letter_id',
     ];
 }

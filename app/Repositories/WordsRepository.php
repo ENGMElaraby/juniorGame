@@ -50,6 +50,7 @@ class WordsRepository extends RepositoryCrud
     public function store(array $data)
     {
         $data['image'] = $this->fileUpload($data['image'], 'words');
+        $data['voice'] = $this->fileUpload($data['voice'], 'voices');
         $this->model::create($data);
     }
 
@@ -61,6 +62,9 @@ class WordsRepository extends RepositoryCrud
     {
         if (isset($data['image']) && is_null($data['image'])) {
             unset($data['image']);
+        }
+        if (isset($data['voice']) && is_null($data['voice'])) {
+            unset($data['voice']);
         }
         parent::update($data, $id);
     }
