@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/admin/auth/login');
-Route::get('/st', static function () {
-    $exitCode = \Illuminate\Support\Facades\Artisan::call('storage:link');
-    dd($exitCode, 'done');
-});
+//Route::get('/st', static function () {
+//    $exitCode = \Illuminate\Support\Facades\Artisan::call('storage:link');
+//    dd($exitCode, 'done');
+//});
