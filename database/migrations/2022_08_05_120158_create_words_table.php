@@ -17,6 +17,7 @@ class CreateWordsTable extends Migration
             $table->id();
             $table->string('word', 191);
             $table->string('image');
+            $table->string('voice', 191)->nullable();
             $table->bigInteger('letter_id', false, true);
             $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade');
 
