@@ -80,17 +80,17 @@ abstract class RepositoryCrud extends Repository implements RepositoryContractCr
     /**
      * @param int|Model $id
      */
-    public function destroy(int|Model $id): void
+    public function destroy(int|Model $id): mixed
     {
         if ($id instanceof Model) {
             $id->delete();
-            return;
-        } else {
-            $model = $this->find($id);
-            if ($model) {
-                $model->delete();
-                return;
-            }
+            return $id;
+        }
+
+        $model = $this->find($id);
+        if ($model) {
+            $model->delete();
+            return $model;
         }
         throw new \RuntimeException('Not found resource');
     }

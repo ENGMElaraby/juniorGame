@@ -167,9 +167,9 @@ abstract class CrudControllerController extends Controller implements CrudContro
      */
     public function destroy(int|Model $id): Response
     {
-        $this->repository->destroy($id);
+        $model = $this->repository->destroy($id);
         return new Response(
-            redirect: $this->deleteRedirect(),
+            redirect: $this->deleteRedirect($model),
             alert: $this->destroyAlert('success', 'تم المسح')
         );
     }
