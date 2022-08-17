@@ -63,6 +63,7 @@
                         <th>الكلمه</th>
                         <th>يندرج تحت حرف</th>
                         <th>الصوره</th>
+                        <th>الصوت</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -77,6 +78,9 @@
                             </td>
                             <td>
                                 <img src="{{ $letter->image }}" alt="" width="100" height="100">
+                            </td>
+                            <td>
+                                <a href="{{ $letter->voice }}" class="badge badge-info" target="_blank">فتح</a>
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-secondary"

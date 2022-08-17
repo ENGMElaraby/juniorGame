@@ -61,6 +61,12 @@
                                                name="image"
                                                required>
                                     </div>
+                                    <div class="col-md-3 mb-5">
+                                        <label for="voice">الصوت</label>
+                                        <input type="file" class="form-control" id="voice"
+                                               name="voice"
+                                               required>
+                                    </div>
                                 </div>
                                 <button id="submit_saved" class="btn btn-primary mt-2" type="submit">حفظ</button>
                             </form>

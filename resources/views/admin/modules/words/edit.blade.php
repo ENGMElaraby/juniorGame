@@ -66,6 +66,16 @@
                                     <div class="col-md-3 mb-5">
                                         <img src="{{ $data->image }}" alt="" width="100" height="100">
                                     </div>
+                                    <div class="col-md-3 mb-5">
+                                        <label for="voice">الصوت</label>
+                                        <input type="file" class="form-control" id="voice"
+                                               name="voice"
+                                        >
+                                    </div>
+                                    <div class="col-md-3 mb-5">
+                                        <a href="{{ $data->voice }}" class="badge badge-info" target="_blank">فتح
+                                            الصوت</a>
+                                    </div>
                                 </div>
                                 <button id="submit_saved" class="btn btn-primary mt-2" type="submit">حفظ</button>
                             </form>

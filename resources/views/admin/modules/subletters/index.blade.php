@@ -81,7 +81,6 @@
                             <td>
                                 {{ $letter->word }}
                             </td>
-
                             <td>
                                 <a href="{{ $letter->voice }}" class="badge badge-info" target="_blank">فتح</a>
                             </td>
