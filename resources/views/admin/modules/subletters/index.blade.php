@@ -62,6 +62,9 @@
                     <tr>
                         <th>الحرف</th>
                         <th>يندرج تحت حرف</th>
+                        <th>الكلمه</th>
+                        <th>الصوت</th>
+                        <th>الصوره</th>
                         <th>الحاله</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
@@ -74,6 +77,16 @@
                             </td>
                             <td>
                                 {{ \App\Models\Letter::find($letter->letter_id)?->letter }}
+                            </td>
+                            <td>
+                                {{ $letter->word }}
+                            </td>
+
+                            <td>
+                                <a href="{{ $letter->voice }}" target="_blank">فتح</a>
+                            </td>
+                            <td>
+                                <img src="{{ $letter->image }}" alt="" width="100" height="100">
                             </td>
                             <td>
                                 @if($letter->status)

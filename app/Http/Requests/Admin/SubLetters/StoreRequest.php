@@ -26,6 +26,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'letter' => ['required', 'string', 'max:2'],
+            'word' => ['required', 'string', 'max:20'],
+            'image' => ['required', 'image'],
+            'voice' => ['required', 'file'],
             'status' => ['required', 'string', 'max:1'],
             'letter_id' => ['required'],
         ];

@@ -43,7 +43,6 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3 mb-5">
-
                                         <label for="word">الكلمه</label>
                                         <input type="text" class="form-control" id="word"
                                                name="word"
