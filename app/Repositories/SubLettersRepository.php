@@ -60,16 +60,20 @@ class SubLettersRepository extends RepositoryCrud
      */
     public function update(array $data, $id): mixed
     {
+        if (isset($data['image']) && !is_null($data['image'])) {
+            $data['image'] = $this->fileUpload($data['image'], 'words');
+        }
+
         if (isset($data['image']) && is_null($data['image'])) {
             unset($data['image']);
-        } else {
-            $data['image'] = $this->fileUpload($data['image'], 'words');
+        }
+
+        if (isset($data['voice']) && !is_null($data['voice'])) {
+            $data['voice'] = $this->fileUpload($data['voice'], 'words');
         }
 
         if (isset($data['voice']) && is_null($data['voice'])) {
             unset($data['voice']);
-        } else {
-            $data['voice'] = $this->fileUpload($data['voice'], 'voices');
         }
         return parent::update($data, $id);
     }
