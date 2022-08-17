@@ -45,7 +45,7 @@
                                     <div class="col-md-3 mb-5">
                                         <label for="letter">الحرف</label>
                                         <input type="text" class="form-control" id="letter"
-                                               name="letter" maxlength="1"
+                                               name="letter" maxlength="2"
                                                placeholder="الحرف"
                                                value="{{ old('letter') }}" required>
                                         <div class="valid-tooltip">
