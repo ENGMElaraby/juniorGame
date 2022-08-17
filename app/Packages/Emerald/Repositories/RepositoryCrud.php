@@ -117,8 +117,8 @@ abstract class RepositoryCrud extends Repository implements RepositoryContractCr
         } else {
             $model = $this->find($id);
         }
-
+        $id = $model->letter_id;
         $model->update($data);
-        return $model;
+        return $id;
     }
 }
