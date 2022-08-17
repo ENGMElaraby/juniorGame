@@ -51,7 +51,7 @@ class WordsRepository extends RepositoryCrud
     {
         $data['image'] = $this->fileUpload($data['image'], 'words');
         $data['voice'] = $this->fileUpload($data['voice'], 'voices');
-        $this->model::create($data);
+        return $this->model::create($data);
     }
 
     /**

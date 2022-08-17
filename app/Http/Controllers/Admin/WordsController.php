@@ -26,4 +26,14 @@ class WordsController extends CrudControllerController
     }
 
 
+    /**
+     * @param $model
+     * @return string
+     */
+    public function storeRedirect($model): string
+    {
+        return route($this->route . 'index', ['letter_id' => $model->letter_id]);
+    }
+
+
 }
