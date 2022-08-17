@@ -83,7 +83,7 @@
                             </td>
 
                             <td>
-                                <a href="{{ $letter->voice }}" target="_blank">فتح</a>
+                                <a href="{{ $letter->voice }}" class="badge badge-info" target="_blank">فتح</a>
                             </td>
                             <td>
                                 <img src="{{ $letter->image }}" alt="" width="100" height="100">

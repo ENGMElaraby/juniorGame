@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\SubLetter;
+use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\Pure;
 use MElaraby\Emerald\Helpers\FilesHelper;
 use MElaraby\Emerald\Repositories\RepositoryCrud;
@@ -51,5 +52,20 @@ class SubLettersRepository extends RepositoryCrud
         $data['image'] = $this->fileUpload($data['image'], 'words');
         $data['voice'] = $this->fileUpload($data['voice'], 'voices');
         $this->model::create($data);
+    }
+
+    /**
+     * @param array $data
+     * @param int|Model $id
+     */
+    public function update(array $data, $id): void
+    {
+        if (isset($data['image']) && is_null($data['image'])) {
+            unset($data['image']);
+        }
+        if (isset($data['voice']) && is_null($data['voice'])) {
+            unset($data['voice']);
+        }
+        parent::update($data, $id);
     }
 }
