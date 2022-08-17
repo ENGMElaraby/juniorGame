@@ -51,7 +51,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->explicitBinding();
 
         $this->routes(function () {
 
@@ -75,19 +74,6 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
-    }
-
-    /**
-     * Explicit Binding or variable in route file
-     */
-    private function explicitBinding()
-    {
-        Route::model('semester', EducationSemester::class);
-        Route::model('video', SemesterVideo::class);
-        Route::model('exam', SemesterExams::class);
-        Route::model('offline_exam', OfflineExam::class);
-        Route::model('unit', SemesterUnit::class);
-        Route::model('game_level', Level::class);
     }
 
     /**
