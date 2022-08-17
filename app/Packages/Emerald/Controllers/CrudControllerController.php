@@ -153,8 +153,8 @@ abstract class CrudControllerController extends Controller implements CrudContro
     {
         $request = app($this->updateRequest);
         return new Response(
-            data: $this->repository->update($request->validated(), $id),
-            redirect: $this->updateRedirect($id),
+            data: $model = $this->repository->update($request->validated(), $id),
+            redirect: $this->updateRedirect($model),
             alert: $this->updateAlert('success', 'تم التعديل')
         );
     }
