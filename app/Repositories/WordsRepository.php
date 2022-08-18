@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\Pure;
 use MElaraby\Emerald\Helpers\FilesHelper;
 use MElaraby\Emerald\Repositories\RepositoryCrud;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class WordsRepository extends RepositoryCrud
 {
@@ -20,27 +22,6 @@ class WordsRepository extends RepositoryCrud
     public function __construct(Word $model)
     {
         parent::__construct($model);
-    }
-
-
-    /**
-     * @param bool $pagination
-     * @param int $perPage
-     * @return mixed
-     */
-    public function index(bool $pagination = false, int $perPage = 6): mixed
-    {
-        $this->newQuery()->eagerLoad()->setClauses();
-
-        $model = $this->query;
-
-        if ($pagination) {
-            return $model->paginate($perPage);
-        }
-        if (request()->has('letter_id')) {
-            $model->where('letter_id', request()->get('letter_id'));
-        }
-        return $model->get(['*']);
     }
 
     /**
@@ -76,5 +57,41 @@ class WordsRepository extends RepositoryCrud
             unset($data['voice']);
         }
         return parent::update($data, $id);
+    }
+
+    /**
+     * @param string|null $letter
+     * @return mixed
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function getWords(?int $letter = null): mixed
+    {
+        if ($letter) {
+            $this->where('letter_id', $letter);
+        }
+        return $this->index();
+    }
+
+    /**
+     * @param bool $pagination
+     * @param int $perPage
+     * @return mixed
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function index(bool $pagination = false, int $perPage = 6): mixed
+    {
+        $this->newQuery()->eagerLoad()->setClauses();
+
+        $model = $this->query;
+
+        if ($pagination) {
+            return $model->paginate($perPage);
+        }
+        if (request()->has('letter_id')) {
+            $model->where('letter_id', request()->get('letter_id'));
+        }
+        return $model->get(['*']);
     }
 }

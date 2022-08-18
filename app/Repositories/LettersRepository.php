@@ -27,9 +27,18 @@ class LettersRepository extends RepositoryCrud
      * @param array $data
      * @return void
      */
-    public function store(array $data)
+    public function store(array $data): void
     {
         $data['status'] = (int)$data['status'];
         $this->model::create($data);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLetters(): mixed
+    {
+        return $this->where('status', true)
+            ->index();
     }
 }

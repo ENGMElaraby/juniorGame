@@ -19,4 +19,9 @@ class Letter extends Model
         'youtube',
         'status',
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }

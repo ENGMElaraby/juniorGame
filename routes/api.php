@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
+Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], static function () {
 //    Route::post('login', 'LoginController@login');
     Route::post('register', 'RegisterController@register');
-//    Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
-//    Route::post('password/reset', 'ResetPasswordController@reset');
 });
-
+Route::get('get-letters', 'API@getLetters');
+Route::get('get-sub-letters/{letter?}', 'API@getSubLetters');
+Route::get('get-words/{letter?}', 'API@getWords');
 //Route::group(['middleware' => 'auth:sanctum'], function () {
 //    Route::post('update_token', 'Auth\LoginController@updateToken');
 //
