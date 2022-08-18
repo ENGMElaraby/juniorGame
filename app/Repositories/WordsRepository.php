@@ -60,7 +60,7 @@ class WordsRepository extends RepositoryCrud
     }
 
     /**
-     * @param string|null $letter
+     * @param int|null $letter
      * @return mixed
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
