@@ -76,10 +76,11 @@ class QuestionsRepository extends RepositoryCrud
         if (isset($data['answers'])) {
             foreach ($data['answers'] as $answer) {
                 if (isset($answer['id']) && !is_null($answer['id'])) {
-                    QuestionAnswer::find($answer['id'])->update([
+                    $theAnswer = QuestionAnswer::find($answer['id']);
+                    $theAnswer->update([
                         'title' => $answer['title'] ?? null,
-                        'image' => (isset($answer['image']) && !is_null($answer['image'])) ? $this->fileUpload($answer['image'], 'images') : null,
-                        'voice' => (isset($answer['voice']) && !is_null($answer['voice'])) ? $this->fileUpload($answer['voice'], 'voices') : null,
+                        'image' => (isset($answer['image']) && !is_null($answer['image'])) ? $this->fileUpload($answer['image'], 'images') : $theAnswer->image,
+                        'voice' => (isset($answer['voice']) && !is_null($answer['voice'])) ? $this->fileUpload($answer['voice'], 'voices') : $theAnswer->voice,
                     ]);
                     continue;
                 }
