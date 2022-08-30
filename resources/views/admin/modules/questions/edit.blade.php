@@ -10,10 +10,23 @@
     <script src="{{ asset('assets/js/scrollspyNav.js') }}"></script>
     <script src="{{ asset('assets/js/forms/bootstrap_validation/bs_validation_script.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.min.js"
+            integrity="sha512-foIijUdV0fR0Zew7vmw98E6mOWd9gkGWQBWaoA1EOFAx+pY+N8FmmtIYAVj64R98KeD2wzZh1aHK0JSpKmRH8w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endpush
 
 @push('script')
+    <script>
+        $(".repeater-default").repeater({
+            show: function () {
+                $(this).slideDown();
+            }, hide: function (e) {
+                confirm("متأكد تردي مسح ؟") && $(this).slideUp(e)
+            }
+        })
+    </script>
 @endpush
+
 
 @section('content_area')
     <div class="row layout-top-spacing" id="cancel-row">
@@ -30,7 +43,7 @@
                         </div>
                         <div class="widget-content widget-content-area">
                             <form class="needs-validation" method="post" novalidate id="storeForm"
-                                  action="{{ route('admin.words.update', $data['id']) }}"
+                                  action="{{ route('admin.questions.update', $data['id']) }}"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
@@ -45,11 +58,11 @@
                                         </select>
                                     </div>
                                     <div class="col-md-3 mb-5">
-                                        <label for="word">الكلمه</label>
-                                        <input type="text" class="form-control" id="word"
-                                               name="word"
-                                               placeholder="الكلمه"
-                                               value="{{ old('word') ?? $data->word }}" required>
+                                        <label for="title">السؤال</label>
+                                        <input type="text" class="form-control" id="title"
+                                               name="title"
+                                               placeholder="السؤال"
+                                               value="{{ old('title') ?? $data->title }}" required>
                                         <div class="valid-tooltip">
                                             تبدو جيدا!
                                         </div>
@@ -72,9 +85,103 @@
                                                name="voice"
                                         >
                                     </div>
-                                    <div class="col-md-3 mb-5">
-                                        <a href="{{ $data->voice }}" class="badge badge-info" target="_blank">فتح
-                                            الصوت</a>
+                                    @if(!is_null($data->voice))
+                                        <div class="col-md-1 mb-5">
+                                            <a href="{{ $answer->voice }}" class="badge badge-info"
+                                               target="_blank">فتح
+                                                الصوت</a>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="repeater-default">
+                                    <div data-repeater-list="answers">
+                                        @foreach($data->answers as $answer)
+                                            <div data-repeater-item class="form-row">
+                                                <div class="col-md-3 mb-5">
+                                                    <label for="title">السؤال</label>
+                                                    <input type="text" class="form-control" id="title"
+                                                           name="title"
+                                                           placeholder="السؤال"
+                                                           value="{{ old('title') ?? $answer->title }}" required>
+                                                    <div class="valid-tooltip">
+                                                        تبدو جيدا!
+                                                    </div>
+                                                    <div class="invalid-tooltip">
+                                                        من فضلك ادخل الحقل.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 mb-5">
+                                                    <label for="image">الصوره</label>
+                                                    <input type="file" class="form-control" id="image"
+                                                           name="image"
+                                                    >
+                                                </div>
+                                                <div class="col-md-1 mb-5">
+                                                    <img src="{{ $answer->image }}" alt="" width="100" height="100">
+                                                </div>
+                                                <div class="col-md-3 mb-5">
+                                                    <label for="voice">الصوت</label>
+                                                    <input type="file" class="form-control" id="voice"
+                                                           name="voice"
+                                                    >
+                                                </div>
+                                                @if(!is_null($answer->voice))
+                                                    <div class="col-md-1 mb-5">
+                                                        <a href="{{ $answer->voice }}" class="badge badge-info"
+                                                           target="_blank">فتح
+                                                            الصوت</a>
+                                                    </div>
+                                                @endif
+                                                <div class="col-md-3 col-sm-12 form-group d-flex align-items-center"
+                                                     style="padding-top: 1.5rem!important;">
+                                                    <button class="btn btn-danger" data-repeater-delete type="button"><i
+                                                                class="bx bx-x"></i>
+                                                        مسح من الامتحان
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <div data-repeater-item class="form-row">
+                                            <div class="col-md-3 mb-5">
+                                                <label for="title">الاجابه</label>
+                                                <input type="text" class="form-control" id="title"
+                                                       name="title"
+                                                       placeholder="الاجابه"
+                                                       value="{{ old('title') }}">
+                                                <div class="valid-tooltip">
+                                                    تبدو جيدا!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    من فضلك ادخل الحقل.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-5">
+                                                <label for="image">الصوره</label>
+                                                <input type="file" class="form-control" id="image"
+                                                       name="image"
+                                                       required>
+                                            </div>
+                                            <div class="col-md-3 mb-5">
+                                                <label for="voice">الصوت</label>
+                                                <input type="file" class="form-control" id="voice"
+                                                       name="voice"
+                                                >
+                                            </div>
+                                            <div class="col-md-3 col-sm-12 form-group d-flex align-items-center"
+                                                 style="padding-top: 1.5rem!important;">
+                                                <button class="btn btn-danger" data-repeater-delete type="button"><i
+                                                            class="bx bx-x"></i>
+                                                    مسح من الامتحان
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="col p-0">
+                                        <button class="btn btn-secondary" data-repeater-create type="button"><i
+                                                    class="bx bx-plus"></i>
+                                            اضف اجابه
+                                        </button>
                                     </div>
                                 </div>
                                 <button id="submit_saved" class="btn btn-primary mt-2" type="submit">حفظ</button>

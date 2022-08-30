@@ -17,6 +17,3 @@ Route::redirect('/', '/admin/auth/login');
 //\Illuminate\Support\Facades\Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/artisan', function () {
-    \Illuminate\Support\Facades\Artisan::call('migrate');
-});

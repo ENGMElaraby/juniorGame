@@ -63,7 +63,7 @@
                         <th>السؤال</th>
                         <th>الصوره</th>
                         <th>الصوت</th>
-                        <th>الاجابات</th>
+                        {{--                        <th>الاجابات</th>--}}
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -81,11 +81,11 @@
                                     <a href="{{ $question->voice }}" class="badge badge-info" target="_blank">فتح</a>
                                 @endif
                             </td>
-                            <td>
-                                <a href="{{ route('admin.question-answers.index', ['question_id'=>$question->id]) }}"
-                                   class="badge badge-danger"
-                                   target="_blank">فتح</a>
-                            </td>
+                            {{--                            <td>--}}
+                            {{--                                <a href="{{ route('admin.question-answers.index', ['question_id'=>$question->id]) }}"--}}
+                            {{--                                   class="badge badge-danger"--}}
+                            {{--                                   target="_blank">فتح</a>--}}
+                            {{--                            </td>--}}
                             <td class="text-center">
                                 <a class="btn btn-secondary"
                                    href="{{ route('admin.questions.edit', $question->id) }}">تعديل</a>

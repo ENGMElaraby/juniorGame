@@ -72,7 +72,18 @@ class QuestionsRepository extends RepositoryCrud
         if (isset($data['voice']) && is_null($data['voice'])) {
             unset($data['voice']);
         }
-        return parent::update($data, $id);
+        $model = parent::update($data, $id);
+        if (isset($data['answers'])) {
+            foreach ($data['answers'] as $answer) {
+                QuestionAnswer::create([
+                    'question_id' => $model->id,
+                    'title' => $answer['title'] ?? null,
+                    'image' => $this->fileUpload($answer['image'], 'words'),
+                    'voice' => isset($answer['voice']) ? $this->fileUpload($answer['voice'], 'voices') : null,
+                ]);
+            }
+        }
+        return $model;
     }
 
     /**
