@@ -21,6 +21,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], static function () {
 Route::get('get-letters', 'API@getLetters');
 Route::get('get-sub-letters/{letter?}', 'API@getSubLetters');
 Route::get('get-words/{letter?}', 'API@getWords');
+Route::get('questions/{letter?}', 'API@getQuestions');
 //Route::group(['middleware' => 'auth:sanctum'], function () {
 //    Route::post('update_token', 'Auth\LoginController@updateToken');
 //

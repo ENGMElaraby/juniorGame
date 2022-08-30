@@ -45,7 +45,7 @@
 @section('content_area')
     <div class="row layout-top-spacing mt-0" id="cancel-row">
         <div class="action-btn layout-top-spacing mb-3 mt-0">
-            <a href="{{ route('admin.letters.create')  }}" class="btn btn-primary">
+            <a href="{{ route('admin.questions.create')  }}" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      class="feather feather-plus-circle">
@@ -53,58 +53,44 @@
                     <line x1="12" y1="8" x2="12" y2="16"></line>
                     <line x1="8" y1="12" x2="16" y2="12"></line>
                 </svg>
-                أضاف حرف</a>
+                أضاف </a>
         </div>
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
             <div class="widget-content widget-content-area br-6">
                 <table id="alter_pagination" class="table table-hover" style="width:100%">
                     <thead>
                     <tr>
-                        <th>الحرف</th>
-                        <th>الحاله</th>
-                        <th>القصه</th>
-                        <th>حروف التشكيل</th>
-                        <th>الكلمات</th>
-                        <th>الاسئله</th>
+                        <th>السؤال</th>
+                        <th>الصوره</th>
+                        <th>الصوت</th>
+                        <th>الاجابات</th>
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
                     <tbody style="direction: ltr">
-                    @foreach($data as $letter)
+                    @foreach($data as $question)
                         <tr>
                             <td>
-                                {{ $letter->letter }}
+                                {{ $question->title }}
                             </td>
                             <td>
-                                @if($letter->status)
-                                    <span class="badge badge-success">مفعل</span>
-                                @else
-                                    <span class="badge badge-danger">غير مفعل</span>
+                                <img src="{{ $question->image }}" alt="" width="100" height="100">
+                            </td>
+                            <td>
+                                @if(!is_null($question->voice))
+                                    <a href="{{ $question->voice }}" class="badge badge-info" target="_blank">فتح</a>
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ $letter->youtube }}" class="badge badge-dark" target="_blank">فتح</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.sub-letters.index', ['letter_id'=>$letter->id]) }}"
-                                   class="badge badge-info"
-                                   target="_blank">فتح</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.words.index', ['letter_id'=>$letter->id]) }}"
-                                   class="badge badge-info"
-                                   target="_blank">فتح</a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.questions.index', ['letter_id'=>$letter->id]) }}"
+                                <a href="{{ route('admin.question-answers.index', ['question_id'=>$question->id]) }}"
                                    class="badge badge-danger"
                                    target="_blank">فتح</a>
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-secondary"
-                                   href="{{ route('admin.letters.edit', $letter->id) }}">تعديل</a>
+                                   href="{{ route('admin.questions.edit', $question->id) }}">تعديل</a>
                                 <form method="POST"
-                                      action="{{ route('admin.letters.destroy', $letter->id)  }}">
+                                      action="{{ route('admin.questions.destroy', $question->id)  }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 

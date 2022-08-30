@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin\Words;
+namespace App\Http\Requests\Admin\Questions;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +26,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'word' => ['required', 'string', 'max:20'],
-            'image' => ['required', 'image'],
-            'voice' => ['required', 'file'],
-            'letter_id' => ['required'],
+            'image' => ['sometimes', 'image'],
+            'voice' => ['sometimes', 'file'],
+            'letter_id' => ['sometimes'],
         ];
     }
 }

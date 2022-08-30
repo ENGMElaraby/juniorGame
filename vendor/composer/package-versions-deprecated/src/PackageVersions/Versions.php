@@ -198,7 +198,7 @@ final class Versions
   'symfony/stopwatch' => 'v5.3.4@b24c6a92c6db316fee69e38c80591e080e41536c',
   'symfony/var-exporter' => 'v5.3.8@a7604de14bcf472fe8e33f758e9e5b7bf07d3b91',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'laravel/laravel' => 'dev-main@968dd02fe35966d2f7486b0658205d9d510e42a6',
+  'laravel/laravel' => 'dev-main@9870b4382d227e9e5ba8282f2b0b567ad2c1191c',
 );
 
     private function __construct()

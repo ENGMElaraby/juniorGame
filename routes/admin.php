@@ -31,5 +31,7 @@ Route::group(['middleware' => 'auth:admin'], static function () {
     Route::resource('letters', 'LettersController');
     Route::resource('sub-letters', 'SubLettersController');
     Route::resource('words', 'WordsController');
+    Route::resource('questions', 'QuestionsController');
+    Route::resource('question-answers', 'QuestionAnswersController');
 
 });
