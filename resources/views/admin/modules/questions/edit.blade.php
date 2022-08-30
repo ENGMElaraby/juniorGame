@@ -62,7 +62,7 @@
                                         <input type="text" class="form-control" id="title"
                                                name="title"
                                                placeholder="السؤال"
-                                               value="{{ old('title') ?? $data->title }}" required>
+                                               value="{{ old('title') ?? $data->title }}">
                                         <div class="valid-tooltip">
                                             تبدو جيدا!
                                         </div>
@@ -102,7 +102,9 @@
                                                     <input type="text" class="form-control" id="title"
                                                            name="title"
                                                            placeholder="السؤال"
-                                                           value="{{ old('title') ?? $answer->title }}" required>
+                                                           value="{{ old('title') ?? $answer->title }}">
+                                                    <input type="hidden" name="id" value="{{ $answer->id }}"/>
+
                                                     <div class="valid-tooltip">
                                                         تبدو جيدا!
                                                     </div>

@@ -75,6 +75,15 @@ class QuestionsRepository extends RepositoryCrud
         $model = parent::update($data, $id);
         if (isset($data['answers'])) {
             foreach ($data['answers'] as $answer) {
+                if (isset($answer['id']) && !is_null($answer['id'])) {
+                    QuestionAnswer::find($answer['id'])->update([
+                        'title' => $answer['title'] ?? null,
+                        'image' => (isset($answer['image']) && !is_null($answer['image'])) ? $this->fileUpload($answer['image'], 'images') : null,
+                        'voice' => (isset($answer['voice']) && !is_null($answer['voice'])) ? $this->fileUpload($answer['voice'], 'voices') : null,
+                    ]);
+                    continue;
+                }
+
                 QuestionAnswer::create([
                     'question_id' => $model->id,
                     'title' => $answer['title'] ?? null,
