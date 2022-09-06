@@ -87,7 +87,7 @@
                                     </div>
                                     @if(!is_null($data->voice))
                                         <div class="col-md-1 mb-5">
-                                            <a href="{{ $answer->voice }}" class="badge badge-info"
+                                            <a href="{{ $data->voice }}" class="badge badge-info"
                                                target="_blank">فتح
                                                 الصوت</a>
                                         </div>
