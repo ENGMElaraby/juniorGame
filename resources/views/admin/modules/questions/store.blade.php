@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="col-md-3 mb-5">
                                                 <label for="voice">الاجابه صحيحه</label>
-                                                <label class="switch s-icons s-outline s-outline-default mr-2">
+                                                <label class="switch s-icons s-outline s-outline-danger mr-2">
                                                     <input type="checkbox" name="correct" checked>
                                                     <span class="slider"></span>
                                                 </label>
