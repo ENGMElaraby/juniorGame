@@ -109,10 +109,14 @@
                                                        name="voice"
                                                 >
                                             </div>
-                                            <label class="switch s-icons s-outline s-outline-default mr-2">
-                                                <input type="checkbox" checked>
-                                                <span class="slider"></span>
-                                            </label>
+                                            <div class="col-md-3 mb-5">
+                                                <label for="voice">الاجابه صحيحه</label>
+                                                <label class="switch s-icons s-outline s-outline-default mr-2">
+                                                    <input type="checkbox" name="correct" checked>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+
                                             <div class="col-md-3 col-sm-12 form-group d-flex align-items-center"
                                                  style="padding-top: 1.5rem!important;">
                                                 <button class="btn btn-danger" data-repeater-delete type="button"><i
