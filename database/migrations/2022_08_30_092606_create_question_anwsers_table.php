@@ -20,6 +20,7 @@ class CreateQuestionAnwsersTable extends Migration
             $table->string('title')->nullable();
             $table->string('image')->nullable();
             $table->string('voice')->nullable();
+            $table->boolean('correct')->default(0);
             $table->timestamps();
         });
     }

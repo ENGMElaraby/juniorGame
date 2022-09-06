@@ -14,6 +14,7 @@ class QuestionAnswer extends Model
         'title',
         'image',
         'voice',
+        'correct',
     ];
 
     protected $hidden = [
