@@ -31,7 +31,6 @@ class QuestionsRepository extends RepositoryCrud
      */
     public function store(array $data)
     {
-
         $data['image'] = $this->fileUpload($data['image'], 'words');
         if (isset($data['voice']) && !is_null($data['voice'])) {
             $data['voice'] = $this->fileUpload($data['voice'], 'voices');
@@ -39,16 +38,32 @@ class QuestionsRepository extends RepositoryCrud
         $model = $this->model::create($data);
         if (isset($data['answers'])) {
             foreach ($data['answers'] as $answer) {
-                QuestionAnswer::create([
-                    'question_id' => $model->id,
-                    'title' => $answer['title'] ?? null,
-                    'image' => $this->fileUpload($answer['image'], 'words'),
-                    'voice' => isset($answer['voice']) ? $this->fileUpload($answer['voice'], 'voices') : null,
-                ]);
+                $this->createQuestion($answer, $model);
             }
         }
 
         return $model;
+    }
+
+    /**
+     * @param mixed $answer
+     * @param mixed $model
+     * @return mixed
+     */
+    private function createQuestion(mixed $answer, mixed $model): mixed
+    {
+        $correct = 0;
+        if (isset($answer['correct'])) {
+            $correct = 1;
+        }
+        QuestionAnswer::create([
+            'question_id' => $model->id,
+            'title' => $answer['title'] ?? null,
+            'image' => $this->fileUpload($answer['image'], 'words'),
+            'voice' => isset($answer['voice']) ? $this->fileUpload($answer['voice'], 'voices') : null,
+            'correct' => $correct,
+        ]);
+        return $answer;
     }
 
     /**
@@ -77,20 +92,19 @@ class QuestionsRepository extends RepositoryCrud
             foreach ($data['answers'] as $answer) {
                 if (isset($answer['id']) && !is_null($answer['id'])) {
                     $theAnswer = QuestionAnswer::find($answer['id']);
+                    $correct = $theAnswer->correct;
+                    if (isset($answer['correct'])) {
+                        $correct = 1;
+                    }
                     $theAnswer->update([
                         'title' => $answer['title'] ?? null,
                         'image' => (isset($answer['image']) && !is_null($answer['image'])) ? $this->fileUpload($answer['image'], 'images') : $theAnswer->image,
                         'voice' => (isset($answer['voice']) && !is_null($answer['voice'])) ? $this->fileUpload($answer['voice'], 'voices') : $theAnswer->voice,
+                        'correct' => $correct,
                     ]);
                     continue;
                 }
-
-                QuestionAnswer::create([
-                    'question_id' => $model->id,
-                    'title' => $answer['title'] ?? null,
-                    'image' => $this->fileUpload($answer['image'], 'words'),
-                    'voice' => isset($answer['voice']) ? $this->fileUpload($answer['voice'], 'voices') : null,
-                ]);
+                $this->createQuestion($answer, $model);
             }
         }
         return $model;

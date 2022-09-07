@@ -63,7 +63,7 @@
                         <th>السؤال</th>
                         <th>الصوره</th>
                         <th>الصوت</th>
-                        {{--                        <th>الاجابات</th>--}}
+                        {{--                        <th>الاجابه صحيحه</th>--}}
                         <th class="text-center dt-no-sorting">التحكم</th>
                     </tr>
                     </thead>
@@ -82,9 +82,14 @@
                                 @endif
                             </td>
                             {{--                            <td>--}}
-                            {{--                                <a href="{{ route('admin.question-answers.index', ['question_id'=>$question->id]) }}"--}}
-                            {{--                                   class="badge badge-danger"--}}
-                            {{--                                   target="_blank">فتح</a>--}}
+                            {{--                                @foreach($question->answers as $answer)--}}
+
+                            {{--                                    @if($question->correct)--}}
+                            {{--                                        <span class="badge badge-success"> {{ $answer->title }} </span>--}}
+                            {{--                                    @else--}}
+                            {{--                                        <span class="badge badge-danger"> {{ $answer->title }} </span>--}}
+                            {{--                                    @endif--}}
+                            {{--                                @endforeach--}}
                             {{--                            </td>--}}
                             <td class="text-center">
                                 <a class="btn btn-secondary"

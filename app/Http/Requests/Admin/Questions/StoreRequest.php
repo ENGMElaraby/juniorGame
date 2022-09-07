@@ -29,6 +29,7 @@ class StoreRequest extends FormRequest
             'title' => ['nullable', 'string', 'max:190'],
             'image' => ['required', 'image'],
             'voice' => ['nullable', 'file'],
+            'correct' => ['nullable'],
             'answers' => ['array'],
         ];
     }

@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/bootstrap-select/bootstrap-select.min.css') }}">
     <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/forms/switches.css') }}">
 @endpush
 
 @push('js')
@@ -97,7 +97,7 @@
                                     <div data-repeater-list="answers">
                                         @foreach($data->answers as $answer)
                                             <div data-repeater-item class="form-row">
-                                                <div class="col-md-3 mb-5">
+                                                <div class="col-md-2 mb-5">
                                                     <label for="title">السؤال</label>
                                                     <input type="text" class="form-control" id="title"
                                                            name="title"
@@ -112,7 +112,7 @@
                                                         من فضلك ادخل الحقل.
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 mb-5">
+                                                <div class="col-md-2 mb-5">
                                                     <label for="image">الصوره</label>
                                                     <input type="file" class="form-control" id="image"
                                                            name="image"
@@ -121,7 +121,7 @@
                                                 <div class="col-md-1 mb-5">
                                                     <img src="{{ $answer->image }}" alt="" width="100" height="100">
                                                 </div>
-                                                <div class="col-md-3 mb-5">
+                                                <div class="col-md-2 mb-5">
                                                     <label for="voice">الصوت</label>
                                                     <input type="file" class="form-control" id="voice"
                                                            name="voice"
@@ -134,6 +134,14 @@
                                                             الصوت</a>
                                                     </div>
                                                 @endif
+                                                <div class="col-md-3 mb-5">
+                                                    <label for="voice">الاجابه صحيحه</label>
+                                                    <label class="switch s-icons s-outline s-outline-danger mr-2">
+                                                        <input type="checkbox" name="correct"
+                                                               @if($answer->correct) checked @endif>
+                                                        <span class="slider"></span>
+                                                    </label>
+                                                </div>
                                                 <div class="col-md-3 col-sm-12 form-group d-flex align-items-center"
                                                      style="padding-top: 1.5rem!important;">
                                                     <button class="btn btn-danger" data-repeater-delete type="button"><i
