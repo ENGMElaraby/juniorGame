@@ -48,15 +48,9 @@ class RegisterController extends Controller
     final public function create(array $data): User
     {
         return User::create([
-            'first_name' => $data['first_name'],
-            'parent_name' => $data['parent_name'],
+            'name' => $data['name'],
             'email' => $data['email'],
-            'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
-            'governorate_id' => $data['governorate_id'],
-            'education_center_id' => $data['education_center_id'],
-            'education_level_id' => $data['education_level_id'] ?? null,
-            'device_token' => $data['device_token'] ?? null,
         ]);
     }
 
@@ -69,16 +63,9 @@ class RegisterController extends Controller
     protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'min:3', 'max:20'],
-            'parent_name' => ['required', 'string', 'min:3', 'max:20'],
-            'email' => ['required_without:mobile', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile' => ['required_without:email', 'string', 'digits:11', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'min:3', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            'governorate_id' => ['required', 'integer', 'exists:governorates,id'],
-            'education_center_id' => ['required', 'integer', 'exists:education_centers,id'],
-            'education_level_id' => ['nullable', 'integer', 'exists:education_levels,id'],
-        ], [
-            // Todo message in arabic
         ]);
     }
 
@@ -96,7 +83,6 @@ class RegisterController extends Controller
             'userMessage' => 'Congratulations registered successfully',
             'data' => [
                 'token' => $user->createToken(User::TokenName)->plainTextToken,
-                'user' => new UserResource($user),
             ],
         ]);
     }
