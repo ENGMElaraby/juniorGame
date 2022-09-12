@@ -61,6 +61,7 @@
                     <thead>
                     <tr>
                         <th>اسم</th>
+                        <th>البريد</th>
                         <th>السن</th>
                         <th>المدرسه</th>
                         <th>البلد</th>
@@ -74,6 +75,9 @@
                         <tr>
                             <td>
                                 {{ $student->name }}
+                            </td>
+                            <td>
+                                {{ $student->email }}
                             </td>
                             <td>
                                 {{ $student->years_old }}

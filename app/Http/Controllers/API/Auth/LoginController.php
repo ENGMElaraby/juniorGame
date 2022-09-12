@@ -33,64 +33,27 @@ class LoginController extends Controller
     }
 
     /**
-     * Get the needed authorization credentials from the request.
-     *
-     * @param Request $request
-     * @return array
-     */
-    protected function credentials(Request $request): array
-    {
-        $columnName = is_numeric($request->get('username')) ? 'mobile' : 'email';
-        return [
-            'password' => $request->get('password'),
-            $columnName => $request->get($this->username()),
-        ];
-    }
-
-    /**
-     * Get the login username to be used by the controller.
-     *
-     * @return string
-     */
-    public function username(): string
-    {
-        return 'username';
-    }
-
-    /**
-     * Send the response after the user was authenticated.
-     *
      * @param Request $request
      * @return Response
      */
-    final protected function sendLoginResponse(Request $request): Response
+    public function socialLogin(Request $request): Response
     {
-        $this->clearLoginAttempts($request);
+        $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string'],
+        ]);
 
-        return $this->authenticated($request, $this->guard()->user());
-    }
-
-    /**
-     * The user has been authenticated.
-     *
-     * @param Request $request
-     * @param mixed $user
-     * @return Response
-     */
-    final protected function authenticated(Request $request, User $user): Response
-    {
+        if (!User::where('email', $request->email)->first()) {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+        }
 
         return Response::response([
             'message' => 'User login successfully',
-            'data' => [
-                'token' => $user->createToken(User::TokenName)->plainTextToken,
-            ],
         ]);
-    }
-
-    public function soicalLogin()
-    {
-        dd(1);
     }
 
     public function redirectToProvider(string $provider)
@@ -141,5 +104,60 @@ class LoginController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('login');
         }
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param Request $request
+     * @return array
+     */
+    protected function credentials(Request $request): array
+    {
+        $columnName = is_numeric($request->get('username')) ? 'mobile' : 'email';
+        return [
+            'password' => $request->get('password'),
+            $columnName => $request->get($this->username()),
+        ];
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username(): string
+    {
+        return 'username';
+    }
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    final protected function sendLoginResponse(Request $request): Response
+    {
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user());
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param Request $request
+     * @param mixed $user
+     * @return Response
+     */
+    final protected function authenticated(Request $request, User $user): Response
+    {
+        return Response::response([
+            'message' => 'User login successfully',
+            'data' => [
+                'token' => $user->createToken(User::TokenName)->plainTextToken,
+            ],
+        ]);
     }
 }

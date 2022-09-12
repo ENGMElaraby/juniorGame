@@ -59,6 +59,19 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-5">
+                                        <label for="email">البريد</label>
+                                        <input type="email" class="form-control" id="email"
+                                               name="email"
+                                               placeholder="البريد"
+                                               value="{{ old('email') ?? $data->email }}">
+                                        <div class="valid-tooltip">
+                                            تبدو جيدا!
+                                        </div>
+                                        <div class="invalid-tooltip">
+                                            من فضلك ادخل الحقل.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-5">
                                         <label for="school">المدرسه</label>
                                         <input type="text" class="form-control" id="school"
                                                name="school"

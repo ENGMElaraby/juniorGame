@@ -11,6 +11,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * @method static create(array $array)
+ * @method static where(string $string, mixed $email)
  */
 class User extends Authenticatable implements Auditable
 {

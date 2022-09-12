@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], static function () {
-    Route::post('login', 'LoginController@soicalLogin');
+    Route::post('register', 'LoginController@socialRegister');
+    Route::post('login', 'LoginController@socialLogin');
 //    Route::get('social-auth/{provider}/callback', [\App\Http\Controllers\API\Auth\LoginController::class, 'providerCallback']);
 //    Route::get('social-auth/{provider}', [\App\Http\Controllers\API\Auth\LoginController::class, 'redirectToProvider'])->name('social.redirect');
 //    Route::post('register', 'RegisterController@register');
