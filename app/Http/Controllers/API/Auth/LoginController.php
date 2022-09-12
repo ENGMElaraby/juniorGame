@@ -39,8 +39,8 @@ class LoginController extends Controller
     public function socialLogin(Request $request): Response
     {
         $request->validate([
-            'name' => ['required', 'string'],
-            'email' => ['required', 'string'],
+            'name' => ['required', 'string', 'min:3', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
         if (!User::where('email', $request->email)->first()) {
