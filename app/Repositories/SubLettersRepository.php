@@ -79,15 +79,15 @@ class SubLettersRepository extends RepositoryCrud
     }
 
     /**
-     * @param string|null $letter
+     * @param string|null $letterId
      * @return mixed
      */
-    public function getLetters(?string $letter = null): mixed
+    public function getLetters(?string $letterId = null): mixed
     {
         $this->where('status', true);
 
-        if ($letter) {
-            $this->where('letter', $letter);
+        if ($letterId) {
+            $this->where('letter_id', $letterId);
         }
 
         return $this->index();

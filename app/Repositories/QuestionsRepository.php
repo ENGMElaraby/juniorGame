@@ -147,15 +147,15 @@ class QuestionsRepository extends RepositoryCrud
     }
 
     /**
-     * @param int|null $letter
+     * @param int|null $letterId
      * @return mixed
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function getQuestions(?int $letter = null): mixed
+    public function getQuestions(?int $letterId = null): mixed
     {
-        if ($letter) {
-            $this->where('letter_id', $letter);
+        if ($letterId) {
+            $this->where('letter_id', $letterId);
         }
         return $this->with('answers')->index();
     }

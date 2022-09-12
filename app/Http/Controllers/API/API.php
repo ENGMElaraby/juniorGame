@@ -23,13 +23,13 @@ class API extends Controller
     }
 
     /**
-     * @param string|null $letter
+     * @param string|null $letterId
      * @return Response
      */
-    public function getSubLetters(?string $letter = null): Response
+    public function getSubLetters(?string $letterId = null): Response
     {
         return new Response(
-            data: $this->subLettersRepository->getLetters($letter),
+            data: $this->subLettersRepository->getLetters($letterId),
             message: 'success',
         );
     }
@@ -46,29 +46,29 @@ class API extends Controller
     }
 
     /**
-     * @param int|null $letter
+     * @param int|null $letterId
      * @return Response
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function getQuestions(?int $letter = null): Response
+    public function getQuestions(?int $letterId = null): Response
     {
         return new Response(
-            data: $this->questionsRepository->getQuestions($letter),
+            data: $this->questionsRepository->getQuestions($letterId),
             message: 'success',
         );
     }
 
     /**
-     * @param int|null $letter
+     * @param int|null $letterId
      * @return Response
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function getWords(?int $letter = null): Response
+    public function getWords(?int $letterId = null): Response
     {
         return new Response(
-            data: $this->wordsRepository->getWords($letter),
+            data: $this->wordsRepository->getWords($letterId),
             message: 'success',
         );
     }

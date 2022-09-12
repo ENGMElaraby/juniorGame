@@ -14,15 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], static function () {
     Route::post('login', 'LoginController@soicalLogin');
-    Route::get('social-auth/{provider}/callback', [\App\Http\Controllers\API\Auth\LoginController::class, 'providerCallback']);
-    Route::get('social-auth/{provider}', [\App\Http\Controllers\API\Auth\LoginController::class, 'redirectToProvider'])->name('social.redirect');
-    Route::post('register', 'RegisterController@register');
+//    Route::get('social-auth/{provider}/callback', [\App\Http\Controllers\API\Auth\LoginController::class, 'providerCallback']);
+//    Route::get('social-auth/{provider}', [\App\Http\Controllers\API\Auth\LoginController::class, 'redirectToProvider'])->name('social.redirect');
+//    Route::post('register', 'RegisterController@register');
 });
 Route::get('get-letters', 'API@getLetters');
-Route::get('get-sub-letters/{letter?}', 'API@getSubLetters');
-Route::get('get-words/{letter?}', 'API@getWords');
-Route::get('questions/{letter?}', 'API@getQuestions');
-//Route::group(['middleware' => 'auth:sanctum'], function () {
-//    Route::post('update_token', 'Auth\LoginController@updateToken');
-//
-//});
+Route::get('get-sub-letters/{letterId?}', 'API@getSubLetters');
+Route::get('get-words/{letterId?}', 'API@getWords');
+Route::get('questions/{letterId?}', 'API@getQuestions');

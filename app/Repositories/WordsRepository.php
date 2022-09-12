@@ -60,15 +60,15 @@ class WordsRepository extends RepositoryCrud
     }
 
     /**
-     * @param int|null $letter
+     * @param int|null $letterId
      * @return mixed
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function getWords(?int $letter = null): mixed
+    public function getWords(?int $letterId = null): mixed
     {
-        if ($letter) {
-            $this->where('letter_id', $letter);
+        if ($letterId) {
+            $this->where('letter_id', $letterId);
         }
         return $this->index();
     }
