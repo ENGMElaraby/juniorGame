@@ -3,14 +3,7 @@
 namespace App\Http\Controllers\API\Auth;
 
 use App\{Http\Controllers\Controller, Http\Resources\UserResource, Models\User};
-use Illuminate\{Contracts\Auth\Guard,
-    Contracts\Auth\StatefulGuard,
-    Foundation\Auth\RegistersUsers,
-    Http\Request,
-    Support\Facades\Auth,
-    Support\Facades\Hash,
-    Support\Facades\Validator
-};
+use Illuminate\{Foundation\Auth\RegistersUsers, Http\Request, Support\Facades\Hash, Support\Facades\Validator};
 use MElaraby\Emerald\HttpFoundation\Response;
 
 class RegisterController extends Controller
@@ -51,6 +44,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'school' => $data['school'],
+            'years_old' => $data['age'],
         ]);
     }
 
@@ -66,6 +61,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'min:3', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'school' => ['required', 'string'],
+            'age' => ['required', 'string'],
         ]);
     }
 
